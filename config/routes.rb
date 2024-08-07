@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#index'
+  resources :workouts do
+    resources :exercises
+  end
+  root to: 'workouts#index'
   
   get   'about', to: 'static_pages#about'
   get   'contact', to: 'static_pages#contact'

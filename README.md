@@ -1,24 +1,30 @@
-# README
+# THINGS IN HERE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## GEMS
 
-Things you may want to cover:
+```
+gem "sassc-rails"
+gem 'haml'
+gem 'simple_form'
+gem 'bootstrap-sass'
+```
+- i didnt use bootstrap sass
+- sass rails for .scss files
+- haml instead of erb
 
-* Ruby version
+## MODELS
+- workouts
+- exercises
 
-* System dependencies
+## OTHER
+- he did his own styling
+- excercises belong to workouts
 
-* Configuration
+```
+  resources :workouts do
+    resources :exercises
+  end
+  root 'workouts#index'
+end
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```

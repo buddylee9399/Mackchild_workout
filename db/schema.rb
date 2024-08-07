@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_07_042444) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_07_042817) do
+  create_table "exercises", force: :cascade do |t|
+    t.string "name"
+    t.integer "sets"
+    t.integer "reps"
+    t.integer "workout_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workout_id"], name: "index_exercises_on_workout_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -44,4 +54,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_07_042444) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "workouts", force: :cascade do |t|
+    t.datetime "date"
+    t.string "workout"
+    t.string "mood"
+    t.string "length"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "exercises", "workouts"
 end
